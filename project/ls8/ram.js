@@ -26,7 +26,7 @@ class RAM {
      * 
      * @returns MDR
      */
-    read(MAR) {
+        read(MAR) {
         // !!! IMPLEMENT ME
         // Read the value in address MAR and return it
         return this.mem[MAR];
