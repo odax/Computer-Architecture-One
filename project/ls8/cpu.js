@@ -63,7 +63,8 @@ class CPU {
     alu(op, regA, regB) {
         switch (op) {
             case 'MUL':
-                // !!! IMPLEMENT ME
+                // this.reg[regA] *= this.reg[regB];
+                this.reg[regA] = (this.reg[regB] * this.reg[regA]) & 0xff;
                 break;
         }
     }
@@ -102,17 +103,19 @@ class CPU {
                 //since operand A is the register number, and operand B is the value
                 this.reg[operandA] = operandB;
                 //we need to move ahead 3 bytes
-                this.PC += 3;// next instruction
+                // this.PC += 3;// next instruction
                 // to peak inside --> console.log(this.reg[operandA]);
                 break;
             case PRN:
                 console.log(this.reg[operandA]);
-                this.PC += 2;
+                // this.PC += 2;
                 break;
-
+            case MUL:
+                this.alu("MUL", operandA, operandB);
+                break;
             case HLT:
                 this.stopClock();
-                this.PC =+ 1;
+                // this.PC =+ 1;
                 break;
 
             //case MUL:
@@ -131,6 +134,8 @@ class CPU {
         // instruction byte tells you how many bytes follow the instruction byte
         // for any particular instruction.
         
+        const instLen = (IR >> 6) + 1;
+        this.PC += instLen;
         // !!! IMPLEMENT ME
     }
 }
