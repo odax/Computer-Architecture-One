@@ -6,11 +6,12 @@ const fs = require('fs');
  *
  * TODO: load this from a file on disk instead of having it hardcoded
  */
-function loadMemory(cput, filename) {
+function loadMemory(cpu, filename) {
 
     const content = fs.readFileSync(filename, 'utf-8');
     
-    const lines = content.trim().split(/[\r\n] +/g);
+    const lines = content.trim().split(/[\r\n]+/g);
+
 
     program = [];
 
@@ -33,7 +34,7 @@ function loadMemory(cput, filename) {
  */
 
  if (process.argv.length != 3) {
-    console.lerrer("usage: ls8 filename");
+    console.error("usage: ls8 filename");
     process.exit(1);
  }
 

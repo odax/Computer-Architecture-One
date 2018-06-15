@@ -82,7 +82,7 @@ class CPU {
 
         // Debugging output
         //below prints out the address of the instruction, and the actual instruction
-        console.log(`${this.PC}: ${IR.toString(2)}`);
+        // console.log(`${this.PC}: ${IR.toString(2)}`);
 
         //above is converting it to a binary string so that we can print it out
 
